@@ -58,16 +58,15 @@ let last = performance.now();
 function loop(now) {
   const dt = (now - last) / 100;   // seconds
   last = now;
-  ctx.fillStyle = '#f09';
+  // clear screen 
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#fff';
 
   // ---- read input inside the loop ----
-  if (keys.ArrowLeft)
-  { player.x -= player.speed * dt;
-    ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
-  }
-  if (keys.ArrowRight) player.x += player.speed * dt;
-  if (keys.ArrowUp)    player.y -= player.speed * dt;
-  if (keys.ArrowDown)  player.y += player.speed * dt;
+  if (keys.ArrowLeft)  { player.x -= player.speed * dt; ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);}
+  if (keys.ArrowRight) { player.x += player.speed * dt; ctx.fillRect(player.x + player.radius, player.y - player.radius/2, player.radius, player.radius/2);}
+  if (keys.ArrowUp)    { player.y -= player.speed * dt; ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);}
+  if (keys.ArrowDown)  { player.y += player.speed * dt; ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);}
   if (keys.KeyA && player.radius >20)  player.radius -= player.speed * dt / 10;
   if (keys.KeyZ && player.radius <100)  player.radius += player.speed * dt / 10;
   if (keys.Space) {
@@ -81,7 +80,6 @@ function loop(now) {
   player.y = Math.max(0, Math.min(canvas.height, player.y));
 
   // ---- render ----
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = '#fff';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
 //  ctx.fillStyle = '#f09';
