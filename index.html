@@ -58,9 +58,13 @@ let last = performance.now();
 function loop(now) {
   const dt = (now - last) / 100;   // seconds
   last = now;
+  ctx.fillStyle = '#f09';
 
   // ---- read input inside the loop ----
-  if (keys.ArrowLeft)  player.x -= player.speed * dt;
+  if (keys.ArrowLeft)
+  { player.x -= player.speed * dt;
+    ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
+  }
   if (keys.ArrowRight) player.x += player.speed * dt;
   if (keys.ArrowUp)    player.y -= player.speed * dt;
   if (keys.ArrowDown)  player.y += player.speed * dt;
@@ -78,10 +82,10 @@ function loop(now) {
 
   // ---- render ----
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#ff9';
+  ctx.fillStyle = '#fff';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
-  ctx.fillStyle = '#f09';
-  ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
+//  ctx.fillStyle = '#f09';
+//  ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
 
   requestAnimationFrame(loop);
 }
