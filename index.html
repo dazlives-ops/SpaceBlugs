@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    canvas { background:#222; display:block; }
+  </style>
+</head>
+<body>
+<canvas id="c" width="800" height="600"></canvas>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+// -------------------------------------------------
+// 1. Input state object
+// -------------------------------------------------
+const keys = {
+  ArrowLeft:  false,
+  ArrowRight: false,
+  ArrowUp:    false,
+  ArrowDown:  false,
+  KeyA:  false,
+  KeyZ:  false,
+  Space:      false
+};
+
+// -------------------------------------------------
+// 2. Listen to key events (once)
+// -------------------------------------------------
+window.addEventListener('keydown', e => {
+  if (e.code in keys) {
+    keys[e.code] = true;
+    e.preventDefault();               // stop page scroll etc.
+  }
+});
+window.addEventListener('keyup', e => {
+  if (e.code in keys) {
+    keys[e.code] = false;
+  }
+});
+
+// -------------------------------------------------
+// 3. Game object (position, velocity, etc.)
+// -------------------------------------------------
+const player = {
+  x: canvas.width / 2,
+  y: canvas.height / 2,
+  radius: 15,
+  speed: 15   // pixels per second
+};
+
+// -------------------------------------------------
+// 4. Animation loop
+// -------------------------------------------------
+let last = performance.now();
+
+function loop(now) {
+  const dt = (now - last) / 100;   // seconds
+  last = now;
+
+  // ---- read input inside the loop ----
+  if (keys.ArrowLeft)  player.x -= player.speed * dt;
+  if (keys.ArrowRight) player.x += player.speed * dt;
+  if (keys.ArrowUp)    player.y -= player.speed * dt;
+  if (keys.ArrowDown)  player.y += player.speed * dt;
+  if (keys.KeyA && player.radius >20)  player.radius -= player.speed * dt / 10;
+  if (keys.KeyZ && player.radius <100)  player.radius += player.speed * dt / 10;
+  if (keys.Space) {
+    // example: fire a bullet, toggle a flag, etc.
+    console.log('FIRE!');
+    keys.Space = false;            // consume one-shot actions
+  }
+
+  // ---- keep inside canvas ----
+  player.x = Math.max(0, Math.min(canvas.width,  player.x));
+  player.y = Math.max(0, Math.min(canvas.height, player.y));
+
+  // ---- render ----
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#0f9';
+  ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
+  ctx.fillStyle = '#f09';
+  ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
+
+  requestAnimationFrame(loop);
+}
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
