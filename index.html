@@ -6,7 +6,7 @@
   </style>
 </head>
 <body>
-<canvas id="c" width="1920" height="1080"></canvas>
+<canvas id="c" width="1920" height="1024"></canvas>
 
 <script>
 const canvas = document.getElementById('c');
@@ -84,7 +84,7 @@ function loop(now) {
   player.y = Math.max(0, Math.min(canvas.height, player.y));
 
   // ---- render ----
-  ctx.fillStyle = '#099';
+  ctx.fillStyle = '#f99';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
 //  ctx.fillStyle = '#f09';
 //  ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
