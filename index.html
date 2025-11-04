@@ -73,7 +73,7 @@ function loop(now) {
                         ctx.fillRect(player.x - player.radius/2, player.y + player.radius,   player.radius, player.radius);}
   if (keys.KeyA && player.radius >20)  player.radius -= player.speed * dt / 10;
   if (keys.KeyZ && player.radius <100) { player.radius += player.speed * dt / 10;
-                        ctx.fillRect(player.x - player.radius/2, player.y - player.radius/2,   player.radius, player.radius);}
+                        ctx.fillRect(player.x - player.radius/2, player.y - player.radius/2, player.radius, player.radius);}
   if (keys.Space) {
     // example: fire a bullet, toggle a flag, etc.
     console.log('FIRE!');
@@ -85,7 +85,7 @@ function loop(now) {
   player.y = Math.max(0, Math.min(canvas.height, player.y));
 
   // ---- render ----
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = '#999';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
 //  ctx.fillStyle = '#f09';
 //  ctx.fillRect(player.x - player.radius*2, player.y - player.radius/2, player.radius, player.radius/2);
