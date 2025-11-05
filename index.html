@@ -80,8 +80,12 @@ function loop(now) {
   }
 
   // ---- keep inside canvas ----
-  player.x = Math.max(0, Math.min(canvas.width,  player.x));
-  player.y = Math.max(0, Math.min(canvas.height, player.y));
+//  player.x = Math.max(0, Math.min(canvas.width,  player.x));
+//  player.y = Math.max(0, Math.min(canvas.height, player.y));
+  if (player.x < 0) player.x = canvas.width;
+  if (player.y < 0) player.x = canvas.height;
+  if (player.x > canvas.width) player.x = 0;
+  if (player.y > canvas.height) player.y = 0;
 
   // ---- render ----
   ctx.fillStyle = '#fff';
