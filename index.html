@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#050; display:block; }
+    canvas { background:#0f0; display:block; }
   </style>
 </head>
 <body>
@@ -25,8 +25,11 @@ const keys = {
 
 window.addEventListener('keydown', e => {
   if (e.code in keys) {
-    for (const key of keys) {
-      alert(typeof(key));
+//    for (const key of keys) {
+    for (const keyName of Object.keys(keys)) {
+      const value = keys[keyName]; // Access the value (true/false) using the key name
+      console.log(`Key: ${keyName}, Value: ${value}`);
+//    alert(typeof(key));
 //      if (key != e.code) {
 //        keys[key] = false;
 //      }
