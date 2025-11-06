@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#999; display:block; }
+    canvas { background:#fff; display:block; }
   </style>
 </head>
 <body>
@@ -85,8 +85,8 @@ function loop(now) {
   if (player.x < 0) player.x = canvas.width;
   if (player.y < 0) player.y = canvas.height;
   if (player.x > canvas.width) player.x = 0;
-  if (player.radius > 200) player.radius = 20;
-  if (player.radius < 20) player.radius = 100;
+  if (player.radius > 150) player.radius = 20;
+  if (player.radius < 20) player.radius = 150;
 
   // ---- render ----
   ctx.fillStyle = '#000';
