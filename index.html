@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#999; display:block; }
+    canvas { background:#000; display:block; }
   </style>
 </head>
 <body>
@@ -29,11 +29,11 @@ window.addEventListener('keydown', e => {
     e.preventDefault();               // stop page scroll etc.
   }
 });
-window.addEventListener('keyup', e => {
-  if (e.code in keys) {
-    keys[e.code] = false;
-  }
-});
+//window.addEventListener('keyup', e => {
+//  if (e.code in keys) {
+//    keys[e.code] = false;
+//  }
+//});
 
 const player = {
   x: canvas.width / 2,
