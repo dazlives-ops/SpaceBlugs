@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#fff; display:block; }
+    canvas { background:#555; display:block; }
   </style>
 </head>
 <body>
@@ -89,7 +89,7 @@ function loop(now) {
   if (player.radius < 20) player.radius = 150;
 
   // ---- render ----
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = '#fff';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
   if (keys.KeyZ) { ctx.fillStyle = '#49f';
      ctx.fillRect(player.x - player.radius/2, player.y - player.radius/2, player.radius, player.radius);}
