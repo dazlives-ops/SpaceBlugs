@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#050; display:block; }
+    canvas { background:#090; display:block; }
   </style>
 </head>
 <body>
@@ -69,8 +69,8 @@ function loop(now) {
                         ctx.fillRect(player.x - player.radius/2, player.y + player.radius,   player.radius, player.radius);}
 //  if (keys.KeyA)  player.radius -= player.speed * dt / 10;
 //  if (keys.KeyZ) player.radius += player.speed * dt / 10;
-  if (keys.KeyA)  player.radius -= player.speed * player.radius * dt / 1000;
-  if (keys.KeyZ) player.radius += player.speed * player.radius * dt / 1000;
+  if (keys.KeyA)  player.radius -= player.speed * player.radius * dt / 300;
+  if (keys.KeyZ) player.radius += player.speed * player.radius * dt / 300;
   if (keys.Space) {
     // example: fire a bullet, toggle a flag, etc.
     console.log('FIRE!');
