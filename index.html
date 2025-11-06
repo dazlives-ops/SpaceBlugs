@@ -2,21 +2,19 @@
 <html>
 <head>
   <style>
-    canvas { background:#030; display:block; }
+    canvas { background:#090; display:block; }
   </style>
 </head>
 <body>
 <canvas id="c" width="1900" height="960"></canvas>
-
   
 <script>
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
-
 const keys = {
   ArrowLeft:  false,
   ArrowRight: false,
-  ArrowUp:    false,
+  ArrowUp:    true,
   ArrowDown:  false,
   KeyA:       false,
   KeyZ:       false,
@@ -71,10 +69,6 @@ function loop(now) {
 //  if (keys.KeyZ) player.radius += player.speed * dt / 10;
   if (keys.KeyA)  player.radius -= player.speed * player.radius * dt / 300;
   if (keys.KeyZ) player.radius += player.speed * player.radius * dt / 300;
-  if (keys.Space) {
-    // example: fire a bullet, toggle a flag, etc.
-    console.log('FIRE!');
-    keys.Space = false;            // consume one-shot actions
   }
 
   // ---- keep inside canvas ----
