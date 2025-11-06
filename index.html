@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#000; display:block; }
+    canvas { background:#050; display:block; }
   </style>
 </head>
 <body>
@@ -25,7 +25,7 @@ const keys = {
 
 window.addEventListener('keydown', e => {
   if (e.code in keys) {
-    for (String key : keys) {
+    for (const key of keys) {
       alert(typeof(key));
 //      if (key != e.code) {
 //        keys[key] = false;
