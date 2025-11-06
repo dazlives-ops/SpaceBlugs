@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#0f0; display:block; }
+    canvas { background:#030; display:block; }
   </style>
 </head>
 <body>
@@ -25,12 +25,12 @@ const keys = {
 
 window.addEventListener('keydown', e => {
   if (e.code in keys) {
-    for (String key : keys) {
-      alert(key);
-      if (key != e.code) {
-        keys[key] = false;
-      }
-    }
+//    for (String key : keys) {
+      alert(typeof(e.code));
+//      if (key != e.code) {
+//        keys[key] = false;
+//      }
+//    }
     keys[e.code] = true;
     e.preventDefault();               // stop page scroll etc.
   }
