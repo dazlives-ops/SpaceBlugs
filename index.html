@@ -2,7 +2,7 @@
 <html>
 <head>
   <style>
-    canvas { background:#999; display:block; }
+    canvas { background:#fff; display:block; }
   </style>
 </head>
 <body>
@@ -60,7 +60,7 @@ function loop(now) {
   last = now;
   // clear screen 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#f00';
+  ctx.fillStyle = '#49f';
 
   // ---- read input inside the loop ----
   if (keys.ArrowLeft)  { player.x-=player.speed*dt; 
@@ -91,7 +91,9 @@ function loop(now) {
   // ---- render ----
   ctx.fillStyle = '#000';
   ctx.fillRect(player.x - player.radius, player.y - player.radius, player.radius *2, player.radius *2);
-  if (keys.KeyZ && player.radius <100) { ctx.fillStyle = '#f00';
+  if (keys.KeyZ) { ctx.fillStyle = '#49f';
+     ctx.fillRect(player.x - player.radius/2, player.y - player.radius/2, player.radius, player.radius);}
+  if (keys.KeyA) { ctx.fillStyle = '#f00';
      ctx.fillRect(player.x - player.radius/2, player.y - player.radius/2, player.radius, player.radius);}
 
   requestAnimationFrame(loop);
